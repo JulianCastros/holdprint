@@ -1,0 +1,36 @@
+Get-ChildItem -Path .\routes -Recurse -Filter *.js |
+  ForEach-Object {
+    "`n=== FILE: $($_.FullName) ===`n"
+    Get-Content -Path $_.FullName -Raw
+  } |
+  Out-File routes-content.txt -Encoding UTF8
+
+
+
+
+
+Get-ChildItem -Path .\models -Recurse -Filter *.js |
+  ForEach-Object {
+    "`n=== FILE: $($_.FullName) ===`n"
+    Get-Content -Path $_.FullName -Raw
+  } |
+  Out-File models-content.txt -Encoding UTF8
+
+
+
+
+
+Get-ChildItem -Path .\pages -Recurse -Filter *.js |
+  ForEach-Object {
+    "`n=== FILE: $($_.FullName) ===`n"
+    Get-Content -Path $_.FullName -Raw
+  } |
+  Out-File pages-content.txt -Encoding UTF8
+
+Get-ChildItem -Path .\controllers -Recurse -Filter *.js |
+  ForEach-Object {
+    "`n=== FILE: $($_.FullName) ===`n"
+    Get-Content -Path $_.FullName -Raw
+  } |
+  Out-File controllers-content.txt -Encoding UTF8
+

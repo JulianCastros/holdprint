@@ -1,0 +1,57 @@
+import React, { useEffect, useState } from 'react';
+import api from '../api';
+
+export default function Dashboard() {
+  const [resumo, setResumo] = useState(null);
+
+  useEffect(() => {
+    async function carregarResumo() {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await api.get('/dashboard', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setResumo(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar resumo do dashboard:', error);
+      }
+    }
+
+    carregarResumo();
+  }, []);
+
+  if (!resumo) {
+    return <p className="text-center mt-10 text-gray-600">Carregando dados do painel...</p>;
+  }
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+      <div className="bg-white shadow rounded p-4">
+        <h2 className="text-lg font-semibold text-gray-700">Clientes</h2>
+        <p className="text-3xl font-bold">{resumo.totalClientes}</p>
+      </div>
+      <div className="bg-white shadow rounded p-4">
+        <h2 className="text-lg font-semibold text-gray-700">Orçamentos</h2>
+        <p className="text-3xl font-bold">{resumo.totalOrcamentos}</p>
+      </div>
+      <div className="bg-white shadow rounded p-4">
+        <h2 className="text-lg font-semibold text-gray-700">Pedidos</h2>
+        <p className="text-3xl font-bold">{resumo.totalPedidos}</p>
+      </div>
+      <div className="bg-white shadow rounded p-4">
+        <h2 className="text-lg font-semibold text-gray-700">Receitas</h2>
+        <p className="text-3xl font-bold text-green-600">R$ {resumo.totalReceitas.toFixed(2)}</p>
+      </div>
+      <div className="bg-white shadow rounded p-4">
+        <h2 className="text-lg font-semibold text-gray-700">Despesas</h2>
+        <p className="text-3xl font-bold text-red-600">R$ {resumo.totalDespesas.toFixed(2)}</p>
+      </div>
+      <div className="bg-white shadow rounded p-4">
+        <h2 className="text-lg font-semibold text-gray-700">Itens em Estoque</h2>
+        <p className="text-3xl font-bold">{resumo.totalEstoque}</p>
+      </div>
+    </div>
+  );
+}
+
+

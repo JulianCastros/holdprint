@@ -1,0 +1,83 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Diretórios de dependências
+node_modules/
+bower_components/
+jspm_packages/
+web_modules/
+
+# Diretórios de build
+dist/
+build/
+.out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+.svelte-kit/
+.vitepress/
+.docusaurus/
+.serverless/
+.fusebox/
+.dynamodb/
+.firebase/
+
+# Arquivos de ambiente
+.env
+.env.*
+!.env.example
+
+# Arquivos temporários e de cache
+*.pid
+*.seed
+*.pid.lock
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+.nyc_output
+.yarn-integrity
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Histórico do REPL
+.node_repl_history
+
+# Arquivos gerados por empacotamento
+*.tgz
+
+# Arquivos de configuração locais
+.vscode/
+.idea/
+*.swp
+
+# Arquivos binários compilados
+build/Release
+
+# Arquivos de cobertura de testes
+coverage/
+*.lcov
+
+# Arquivos específicos do painel Next.js
+serratec-dashboard/node_modules/
+serratec-dashboard/.next/
+serratec-dashboard/.cache/
+serratec-dashboard/out/
+
+# Arquivos específicos do backend
+serratec-backend/node_modules/
+serratec-backend/dist/
+serratec-backend/.env
